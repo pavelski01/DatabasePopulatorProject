@@ -1,1 +1,1 @@
-Populate database with data using sql scripts
+Populate database with data using sql scripts (handwrite)
