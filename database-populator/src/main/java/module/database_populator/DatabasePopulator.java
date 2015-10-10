@@ -39,7 +39,7 @@ public class DatabasePopulator
 			aFileInputStream = new FileInputStream(propertiesName);
 			aProperties.load(new BufferedInputStream(aFileInputStream));
 		}
-		catch (IOException e)
+		catch (IOException ioExcp)
 		{
 			System.err.println("Error: Input/Output properties transfer problem!");
 			return;
@@ -47,7 +47,7 @@ public class DatabasePopulator
 		finally 
 		{
 			try { aFileInputStream.close(); } 
-			catch (IOException ioexcp) 
+			catch (IOException ioExcp) 
 			{
 				System.err.println("Error: Input/Output properties close problem!");
 				return;
@@ -62,7 +62,7 @@ public class DatabasePopulator
 		else if (dbms.equals("postgresql")) driver = "org.postgresql.Driver";
 		else
 		{
-			System.err.println("Error: Database is not supported!");
+			System.err.println("Error: Database Management System is not supported!");
 			return;
 		}
 		if 
@@ -80,22 +80,22 @@ public class DatabasePopulator
 			aDriver = (Driver)Class.forName(driver).newInstance();
 			DriverManager.registerDriver(aDriver);
 		}
-		catch (ClassNotFoundException cnfexcp)
+		catch (ClassNotFoundException cnfExcp)
 		{
 		   System.err.println("Error: Unable to load driver class!");
 		   return;
 		}
-		catch (IllegalAccessException iaexcep) 
+		catch (IllegalAccessException iaExcep) 
 		{
 		   System.err.println("Error: Access problem while loading!");
 		   return;
 		}
-		catch (InstantiationException iexcp)
+		catch (InstantiationException iExcp)
 		{
 		   System.err.println("Error: Unable to instantiate driver!");
 		   return;
 		} 
-		catch (SQLException sqlexcp) 
+		catch (SQLException sqlExcp) 
 		{
 			System.err.println("Error: Structured Query Language exception during driver load!");
 			return;
@@ -107,7 +107,7 @@ public class DatabasePopulator
 		info.put("characterEncoding", "UTF8");
 		Connection aConnection = null;
 		try { aConnection = DriverManager.getConnection(url, info); } 
-		catch (SQLException sqlexcp) 
+		catch (SQLException sqlExcp) 
 		{
 			System.err.println("Error: Structured Query Language exception during connection!");
 			return;
@@ -135,7 +135,7 @@ public class DatabasePopulator
 					new File(zipSqlScripts), "UTF-8", true
 				);
 		}
-		catch (IOException ioexcp)
+		catch (IOException ioExcp)
 		{
 			System.err.println("Error: Input/Output zip transfer problem!");
 			return;
@@ -166,22 +166,22 @@ public class DatabasePopulator
         				aInputStream = aZipFile.getInputStream(ze);
         				runner.runScript(new InputStreamReader(aInputStream, "UTF-8"));
     				} 
-        			catch (ZipException zexcp)         			
+        			catch (ZipException zExcp)         			
         			{
         				System.err.println("Error: Zip problem during streaming!");
         				return;
 					}
-        			catch (UnsupportedEncodingException ueexcp)
+        			catch (UnsupportedEncodingException ueExcp)
         			{
         				System.err.println("Error: Unsupported encoding!");
         				return;
         			}
-        			catch (IOException ioeexcp)
+        			catch (IOException ioeExcp)
         			{
         				System.err.println("Error: Input/Output zip problem during streaming!");
         				return;
 					}        			
-					catch (SQLException sqlexcp)
+					catch (SQLException sqlExcp)
         			{
 						System.err.println("Error: Structured Query Language exception during streaming!");
 						return;
@@ -189,7 +189,7 @@ public class DatabasePopulator
         			finally 
         			{
         				try { aInputStream.close(); } 
-        				catch (IOException ioexcp) 
+        				catch (IOException ioExcp) 
         				{
         					System.err.println("Error: Input/Output zip problem during close stream!");
         					return;
@@ -198,7 +198,7 @@ public class DatabasePopulator
         		}
         	}
         try { aZipFile.close(); } 
-        catch (IOException ioexcp) 
+        catch (IOException ioExcp) 
         {
         	System.err.println("Error: Input/Output zip problem during close!");
 			return;
