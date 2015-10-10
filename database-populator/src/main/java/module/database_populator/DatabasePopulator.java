@@ -54,15 +54,21 @@ public class DatabasePopulator
 			}
 		}
 		String dbms = aProperties.getProperty("dbms");
-		String driver = aProperties.getProperty("driver");
 		String url = aProperties.getProperty("url");
 		String user = aProperties.getProperty("user");
 		String passwd = aProperties.getProperty("passwd");
+		String driver = null;
+		if (dbms.equals("mysql")) driver = "com.mysql.jdbc.Driver";
+		else if (dbms.equals("postgresql")) driver = "org.postgresql.Driver";
+		else
+		{
+			System.err.println("Error: Database is not supported!");
+			return;
+		}
 		if 
 		(
-			dbms == null || driver == null || 
-				url == null || user == null || 
-					passwd == null
+			dbms == null || url == null || 
+				user == null || passwd == null
 		)
 		{
 			System.err.println("Error: Empty proprties key!");
