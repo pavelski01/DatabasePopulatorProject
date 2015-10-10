@@ -9,7 +9,7 @@
 	<version>1.0</version>
 	<packaging>jar</packaging>
 	<name>database-populator</name>
-	<description>populate database for SkyskiProject</description>
+	<description>populate database using sql scripts</description>
 	<dependencies>
 		<dependency>
 			<groupId>com.ibatis</groupId>
