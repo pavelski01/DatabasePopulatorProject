@@ -113,7 +113,7 @@ public class DatabasePopulator
 			return;
 		}		
 		ScriptRunner runner = 
-			new ScriptRunner(aConnection, false, false);		
+			new ScriptRunner(aConnection, false, true);		
 		List<String> sqlScripts = new ArrayList<String>();
 		String key;
 		String value;
