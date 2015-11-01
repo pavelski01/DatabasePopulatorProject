@@ -106,7 +106,11 @@ public class DatabasePopulator
 		info.put("useUnicode", "yes");
 		info.put("characterEncoding", "UTF8");
 		Connection aConnection = null;
-		try { aConnection = DriverManager.getConnection(url, info); } 
+		try 
+		{ 
+			aConnection = DriverManager.getConnection(url, info); 
+			aConnection.setAutoCommit(false);
+		} 
 		catch (SQLException sqlExcp) 
 		{
 			System.err.println("Error: Structured Query Language exception during connection!");
