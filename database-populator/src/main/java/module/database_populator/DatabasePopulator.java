@@ -103,7 +103,7 @@ public class DatabasePopulator
 		Properties info = new Properties();
 		info.put("user", user);
 		info.put("password", passwd);
-		info.put("useUnicode", "yes");
+		info.put("useUnicode", "true");
 		info.put("characterEncoding", "UTF8");
 		Connection aConnection = null;
 		try 
