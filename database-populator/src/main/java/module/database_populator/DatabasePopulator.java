@@ -172,10 +172,8 @@ public class DatabasePopulator
         boolean isSuccess = true;
         for (String ss : sqlScripts)
         {
-        	if (!isSuccess) break;
         	for (ZipArchiveEntry ze : zipEntries)
         	{
-        		if (!isSuccess) break;
         		zipEntryName = ze.getName();
         		if (ss.equals(zipEntryName))
         		{
